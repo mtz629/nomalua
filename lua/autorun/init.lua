@@ -5,7 +5,7 @@ if SERVER then
 
 	include('sv_nomalua.lua')
 	
-	print("[Nomalua] ------ Nomalua v1.20 (by BuzzKill) loaded! ------")
+	print("[Nomalua] ------ Nomalua v1.30 (by BuzzKill) loaded! ------")
 end
 
 if CLIENT then
