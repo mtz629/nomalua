@@ -145,6 +145,24 @@ function NOMALUA.AddWhiteListItem(ply,itemid)
 end
 
 
+function NOMALUA.AddWhiteListItem2(ply,filename, linenum, checktype)
+	table.insert(NOMALUA.Whitelist, {file=filename, line=linenum, check=checktype})
+	NOMALUA.SaveWhitelist()
+	NOMALUA.SendNotice ( {"Whitelist item added\n"} , ply)
+end
+
+function NOMALUA.DelWhiteListItem(ply,itemid)
+	local wlItem = NOMALUA.Whitelist[itemid]
+	if (wlItem == nil) then
+		NOMALUA.SendNotice ( {"Could not locate a whitelist item for id "..itemid, "\n"} , ply)
+	else
+		table.remove(NOMALUA.Whitelist, itemid)
+		NOMALUA.SaveWhitelist()
+		NOMALUA.SendNotice ( {"Whitelist item deleted\n"} , ply)
+	end
+end
+
+
 concommand.Add( "nomalua_scan", function( ply )
 	if IsValid(ply) and not ply:IsSuperAdmin() then
 		ply:PrintMessage(HUD_PRINTCONSOLE, "[Nomalua] Only superadmins or console can launch a Nomalua scan")
@@ -166,7 +184,13 @@ concommand.Add( "nomalua", function( ply, cmd, args )
 		elseif (args[1] == "lastscan") then
 			NOMALUA.OutputResults(ply)
 		elseif (args[1] == "addwl") then
-			NOMALUA.AddWhiteListItem(ply,tonumber(args[2]))
+			if (#args > 2) then
+				NOMALUA.AddWhiteListItem2(ply,args[2],tonumber(args[3]), args[4])
+			else
+				NOMALUA.AddWhiteListItem(ply,tonumber(args[2]))
+			end
+		elseif (args[1] == "delwl") then
+			NOMALUA.DelWhiteListItem(ply,tonumber(args[2]))
 		end
 		
 	end

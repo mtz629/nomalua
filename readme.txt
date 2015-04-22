@@ -1,4 +1,4 @@
-Nomalua v1.30 (released 2015-04-22)
+Nomalua v1.31 (released 2015-04-22)
 
 
 Nomalua is a malware scanner for GMod Lua files.  It scans Lua files on the server (including those mounted through Steam Workshop GMA files) and reports on any suspicious code or code patterns that may warrant further invesitgation. 
@@ -81,6 +81,16 @@ Example:	nomalua whitelist
 Adds a whitelist entry that corresponds to a scan item. For example, from the sample scan output above, if we wanted to add a whitelist for item #4 (Luapad's dynamic code), the command would be...
 Example:	nomalua wladd 4
 
+Optionally, whitelist entries can be added fully verbosely, including filename, line number and type.
+Example:	nomalua wladd lua/includes/extensions/string.lua 34 OBFUSC
+
+
+
+:::: nomalua delwl <whitelist entry id> ::::
+
+Deletes the whitelist entry corresponding to the whitelist entry ID number.
+Example:	nomalua delwl 3
+
 
 
 :::: nomalua lastscan ::::
@@ -107,18 +117,22 @@ Whitelist samples:
 
 ----------  CHANGELOG  ----------
 
+v1.31 - *(2015-04-22)*
+	* Delete whitelist entries
+	* Add whitelist entries verbosely
+
 v1.30 - *(2015-04-22)*
--- * New console command structure
--- * Added ability to add whitelist items
--- * Added ability to dump individual files to console
--- * Ability to re-display previous scan results
+	* New console command structure
+	* Added ability to add whitelist items
+	* Added ability to dump individual files to console
+	* Ability to re-display previous scan results
 
 v1.20 - *(2015-04-21)*
--- * Added risk rank (currently 1 - 5, 5 highest.  Rather arbitrary for now.  Still beta. Hell, the whole thing is still beta)
--- * Optimized check type and pattern check definition code
--- * Fixed bug in directory recursion code
--- * misc minor optimizations
--- * Added additional pattern checks
+	* Added risk rank (currently 1 - 5, 5 highest.  Rather arbitrary for now.  Still beta. Hell, the whole thing is still beta)
+	* Optimized check type and pattern check definition code
+	* Fixed bug in directory recursion code
+	* misc minor optimizations
+	* Added additional pattern checks
 
 v1.11 - *(2015-04-20)*
 	* Bug fix.  AddLuaFiles returning nil under certain conditions, causing scan to error out.
