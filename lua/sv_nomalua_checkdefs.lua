@@ -4,6 +4,7 @@ NOMALUA.PatternChecks = {
 	{Pattern = "STEAM_[0-9]+:[0-9]+:[0-9]+", CheckType = NOMALUA.CheckTypes.AUTHENT, Desc = "Presence of Steam ID", Risk = 2},
 	{Pattern = "http.Post", CheckType = NOMALUA.CheckTypes.NETWORK, Desc = "HTTP server call", Risk = 4},
 	{Pattern = "http.Fetch", CheckType = NOMALUA.CheckTypes.NETWORK, Desc = "HTTP server call", Risk = 4},
+	{Pattern = "HTTP", CheckType = NOMALUA.CheckTypes.NETWORK, Desc = "HTTP server call", Risk = 4},
 	{Pattern = "CompileString", CheckType = NOMALUA.CheckTypes.DYNCODE, Desc = "Dynamic code execution", Risk = 2},
 	{Pattern = "RunString", CheckType = NOMALUA.CheckTypes.DYNCODE, Desc = "Dynamic code execution", Risk = 2},
 	{Pattern = "removeip", CheckType = NOMALUA.CheckTypes.BANMGMT, Desc = "Unban by IP address", Risk = 2},
